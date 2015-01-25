@@ -1,15 +1,25 @@
 img.small-image {
 	max-height: 100px;
+	display: inline-block;
 }
 
 td {
-	height: 125px;
-	vertical-align: middle;
 	color: white;
 }
 
-h4.error {
-	color: red;
+h1, h3 {
+	color: white;
+}
+
+div.well.left {
+	background-color: rgba(0, 0, 0, 0);
+	border-color: rgba(0, 0, 0, 0);
+	box-shadow: none;
+}
+
+div.well.right {
+	background-color: rgba(255, 255, 255, 0.3);
+	border-color: rgba(255, 255, 255, 0.3)
 }
 
 body {
