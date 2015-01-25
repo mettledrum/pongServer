@@ -1,0 +1,20 @@
+img.small-image {
+	max-height: 100px;
+}
+
+td {
+	height: 125px;
+	vertical-align: middle;
+	color: white;
+}
+
+h4.error {
+	color: red;
+}
+
+body {
+	background-image: url('backgroundPong.jpg');
+	background-size:cover;
+	background-attachment:fixed;
+	background-position:center center;
+}

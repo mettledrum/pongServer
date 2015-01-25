@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html ng-app="pongApp">
+
+  <head>
+    <script type= "text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script type= "text/javascript" src="app.js"></script>
+    <link type="text/css" rel="stylesheet" href="style.css"></link>
+  </head>
+
+  <body ng-controller="PicController as picCtrl">
+    <h4 class="error" ng-repeat="error in picCtrl.errors"> {{error}} </h4>
+
+  	<table>
+	  	<tr ng-repeat="picture in picCtrl.pictures">
+		    <td> <input ng-model="picture.chosen" type="checkbox"/> </td>
+		    <td> {{picture.time | date:'MM/dd/yyyy @ h:mma'}} </td>
+		    <td> <img class="small-image" ng-src="{{picture.image}}"/> </td>
+	    </tr>
+    </table>
+  </body>
+
+</html>
