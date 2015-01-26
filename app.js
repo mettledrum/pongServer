@@ -49,13 +49,13 @@
 		};
 
 		picServer.gifize = function() {
-			// $http.post(gifizeEndpoint, {msg: 'ahoy mundo!'}).
-			// 	success(function() {
-			// 		console.log('worked');
-			// 	}).
-			// 	error(function() {
-			// 		console.log('did not work');
-			// 	});
+			$http.post(gifizeEndpoint, {msg: 'ahoy mundo!'}).
+				success(function() {
+					console.log('worked');
+				}).
+				error(function() {
+					console.log('did not work');
+				});
 		};
 	}]);
 })();
