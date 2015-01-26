@@ -19,11 +19,13 @@ func changeHeaderThenServe(h http.Handler) http.HandlerFunc {
 	}
 }
 
+// json -> struct
 type fileNames struct {
     Names []string
 }
 
 // curl -X POST -d "{\"names\": [\"that\", \"and\"]}" http://localhost:8080/gifize
+//TODO: make only posts
 func gifize(rw http.ResponseWriter, req *http.Request) {
     decoder := json.NewDecoder(req.Body)
     var fn fileNames   
@@ -53,5 +55,6 @@ func main() {
 
 	// serve all photos
 	http.Handle("/pong-pics/", http.StripPrefix("/pong-pics/", changeHeaderThenServe(http.FileServer(http.Dir("./daily_pictures")))))
+
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
