@@ -23,7 +23,7 @@ div.well.right {
 }
 
 body {
-	background-image: url('backgroundPong.jpg');
+	background-image: url('../static/backgroundPong.jpg');
 	background-size:cover;
 	background-attachment:fixed;
 	background-position:center center;

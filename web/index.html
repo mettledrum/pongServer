@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="pongApp">
+
+	<head>
+		<title>Pong Gif-Maker</title>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.10/angular-sanitize.min.js"></script>
+		<script src="app.js"></script>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<link type= "text/css" rel="stylesheet" href="../css/style.css"></link>
+	</head>
+
+	<body ng-controller="PicController as picCtrl">
+		<h1> Pong Gif Server </h1>
+		<h3> make your own gifs from these sweet pong action shotzzz&#0153; </h3>
+
+		<!-- edit contents of gif -->
+		<div>
+			<button class="btn btn-danger" ng-click="picCtrl.clearFiles()"> clear </button>
+			<button class="btn btn-default" ng-click="picCtrl.gifize()"> submit </button>
+		</div>
+
+		<div class="left col-md-8 well">
+			<!-- display contents of gif for submission -->
+			<span ng-repeat="gifPic in picCtrl.gifPics">
+				<span ng-bind-html="gifPic"> </span>
+			</span>
+		</div>
+
+		<!-- display pong server pictures with time taken -->
+		<div class="right col-md-4 well"> 
+
+			<!-- print out error(s) connecting to pic server -->
+			<h4 class="error" ng-repeat="error in picCtrl.errors"> {{error}} </h4>
+
+			<table class="table">
+				<tr ng-repeat="picture in picCtrl.pictures">
+					<td>
+						<button class="btn btn-default" ng-click="picCtrl.addFile(picture.image, picture.time)"/>
+							add
+						</button>
+					</td>
+					<td> <img class="small-image" ng-src="{{picture.image}}"/> </td>
+				</tr>
+			</table>
+		</div>
+	</body>
+
+</html>

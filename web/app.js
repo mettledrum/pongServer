@@ -10,7 +10,7 @@
 		var gifizeEndpoint = 'http://localhost:8080/gifize';
 
 		picServer.gifPics = [];
-		picServer.gifPicTimes = [];
+		picServer.gifPicNames = [];
 		var gifPicIdx = 0;
 
 		// parse pic file names from server
@@ -23,10 +23,6 @@
 				for (var i = 0; i < picLinks.length; ++i) {
 					var picHash = {};
 					picHash['image'] = allPicsEndpoint + picLinks[i].innerHTML;
-					// TODO: make picture file name epoch in millis
-					millis = new Date().valueOf() + i * 3699123;
-					picHash['time'] = millis;
-
 					picServer.pictures.push(picHash);
 				}
 			}).
@@ -38,18 +34,19 @@
 			// id is needed to make pictures' html strings unique
 			picHtml = '<img id="' + gifPicIdx.toString() + '" class="small-image" src="' + imageName + '"/>'
 			picServer.gifPics.push(picHtml);
-			picServer.gifPicTimes.push(imageTime);
+			picServer.gifPicNames.push(imageName);
 			gifPicIdx++;
 		};
 
 		picServer.clearFiles = function() {
 			picServer.gifPics = [];
-			picServer.gifPicTimes = [];
+			picServer.gifPicNames = [];
+
 			gifPicIdx = 0;
 		};
 
 		picServer.gifize = function() {
-			$http.post(gifizeEndpoint, {msg: 'ahoy mundo!'}).
+			$http.post(gifizeEndpoint, {'names': picServer.gifPicNames}).
 				success(function() {
 					console.log('worked');
 				}).
