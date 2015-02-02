@@ -27,10 +27,10 @@
 				}
 			}).
 			error(function() {
-				picServer.errors.push("Darn... could not retrieve pictures from pong server.")
+				picServer.errors.push("Could not retrieve pictures from pong server.")
 			});
 
-		picServer.addFile = function(imageName, imageTime) {
+		picServer.addFile = function(imageName) {
 			// id is needed to make pictures' html strings unique
 			picHtml = '<img id="' + gifPicIdx.toString() + '" class="small-image" src="' + imageName + '"/>'
 			picServer.gifPics.push(picHtml);
@@ -41,7 +41,6 @@
 		picServer.clearFiles = function() {
 			picServer.gifPics = [];
 			picServer.gifPicNames = [];
-
 			gifPicIdx = 0;
 		};
 

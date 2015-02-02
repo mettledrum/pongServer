@@ -29,14 +29,12 @@ func gifize(rw http.ResponseWriter, req *http.Request) {
 	log.Println(gifCommand)
 
 	makeGif(gifCommand)
-
-
 }
 
 func constructGifCommand(names []string) string {
-	gifCommand := "gifsicle --delay=75 --loop "
+	gifCommand := "gifsicle --delay=100 --loop "
 	filePrefix := "./daily_pictures/"
-	gifStorageFile := "./pong.gif"
+	gifStorageFile := "./latest_gif/pong.gif"
 
 	for i := range names {
 		fileAddress := strings.Split(names[i], "/")
@@ -67,11 +65,16 @@ func makeGif(gifCommand string) {
 
 func main() {
 	// serve most current photo
-	http.HandleFunc("/latest.png", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "./daily_pictures/doge1.jpg")
+	http.HandleFunc("/latest-pic.gif", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "./latest_picture/gopher.png")
 	})
 
-	// make gifs given pics
+	// serve most current gif
+	http.HandleFunc("/latest-gif.gif", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "./latest_gif/pong.gif")
+	})
+
+	// make gifs from posting pics
 	http.HandleFunc("/gifize", gifize)
 
 	// serve all photos

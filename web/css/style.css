@@ -11,6 +11,21 @@ h1, h3 {
 	color: white;
 }
 
+h4.error {
+	color: red;
+}
+
+div.well.gif {
+	background-color: rgba(0, 0, 0, 0.3);
+	border-color: rgba(0, 0, 0, 0.3);
+	text-align: center;
+	color: white;
+}
+
+img.gif {
+	max-height: 200px;
+}
+
 div.well.left {
 	background-color: rgba(0, 0, 0, 0);
 	border-color: rgba(0, 0, 0, 0);
@@ -18,8 +33,8 @@ div.well.left {
 }
 
 div.well.right {
-	background-color: rgba(255, 255, 255, 0.3);
-	border-color: rgba(255, 255, 255, 0.3)
+	background-color: rgba(0, 0, 0, 0.3);
+	border-color: rgba(0, 0, 0, 0.3)
 }
 
 body {
